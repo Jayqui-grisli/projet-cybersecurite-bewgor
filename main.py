@@ -1,1 +1,4 @@
-import functions
+import functions as fct
+
+
+fct.hello()
