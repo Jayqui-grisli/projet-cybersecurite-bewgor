@@ -1,4 +1,4 @@
-import functions as fct
+import helper as help
 
-lines = fct.parseTXT(r"C:\Users\jackd\Desktop\projet-cybersecurite-bewgor\test.txt")
+lines = help.readTXT(r"C:\Users\jackd\Desktop\projet-cybersecurite-bewgor\test.txt")
 print(lines)
