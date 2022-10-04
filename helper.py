@@ -1,17 +1,21 @@
+import numpy as np
 
 def hello():
     print("hello world")
 
 def readTXT(filepath,keep_space=False):
+    contents=[]
     file=open(filepath)
     try:
-        contents=file.readlines()
+        contents_raw=file.readlines()
     finally:
         file.close()
-    for i in range(len(contents)):
-        contents[i]=contents[i].replace('\n','')
+    for i in range(len(contents_raw)):
+        contents_raw[i]=contents_raw[i].replace('\n','')
         if(not keep_space):
-                contents[i]=contents[i].replace(' ','')
+            contents=contents+contents_raw[i].rstrip().split(' ')
+        else:
+            contents.append(contents_raw[i].rstrip())
     return contents
 
 
@@ -27,3 +31,9 @@ def toLower(contents):
     for word in contents:
         lowerContent.append(word.lower())
     return lowerContent
+
+def firstUpper(contents):
+    firstUpperContent=[]
+    for word in contents:
+        firstUpperContent.append(word.title())
+    return firstUpperContent
