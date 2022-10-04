@@ -1,5 +1,9 @@
 import helper as help
+import functions as f
 
-lines = help.readTXT(r"test.txt")
-lines =help.toUpper(lines)
-print(lines)
+
+print("Hello world !")
+noms=f.traitement_nomh("nompro")
+test=f.traitement_date("test")
+print(noms)
+print(test)
