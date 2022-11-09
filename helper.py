@@ -3,9 +3,9 @@ import numpy as np
 def hello():
     print("hello world")
 
-
-def readTXT(filepath,keep_space=False):
+def readTXT(filename,keep_space=False):
     contents=[]
+    filepath = "./dicos/" + filename + ".txt"
     file=open(filepath)
     try:
         contents_raw=file.readlines()
@@ -21,16 +21,16 @@ def readTXT(filepath,keep_space=False):
 
 
 def toUpper(contents):
-    upperContent=[]
+    upperContent=''
     for word in contents:
-        upperContent.append(word.upper())
+        upperContent+=word.upper()
     return upperContent
 
 
 def toLower(contents):
-    lowerContent=[]
+    lowerContent=''
     for word in contents:
-        lowerContent.append(word.lower())
+        lowerContent+=word.lower()
     return lowerContent
 
 
