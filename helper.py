@@ -3,6 +3,7 @@ import numpy as np
 def hello():
     print("hello world")
 
+
 def readTXT(filepath,keep_space=False):
     contents=[]
     file=open(filepath)
@@ -31,6 +32,7 @@ def toLower(contents):
     for word in contents:
         lowerContent.append(word.lower())
     return lowerContent
+
 
 def firstUpper(contents):
     firstUpperContent=[]
