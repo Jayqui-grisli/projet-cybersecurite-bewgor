@@ -1,13 +1,15 @@
-[noms]
-type = name
+
+
+
+
+|[noms]
 fonction_1=0
 fonction_2=1
 fonction_3=0
 fonction_4=1
-fonction_0=1
+fonction_0=1|
 
 [test]
-type = others
 fonction_1=1
 fonction_2=1
 fonction_3=0
@@ -15,7 +17,6 @@ fonction_4=0
 fonction_0=1
 
 [dates]
-type = date
 fonction_1=0
 fonction_2=0
 fonction_3=0

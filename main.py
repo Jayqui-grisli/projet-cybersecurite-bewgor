@@ -5,19 +5,24 @@ import os
 
 #Interaction utilisateur
 
-nom_sortie=input("Entrez le nom du fichier à générer \n")
+#nom_sortie=input("Entrez le nom du fichier à générer \n")
+nom_sortie='test'
 filepath_sortie = "./sorties_txt/" + nom_sortie + ".txt"
 
 
 #Lecture du fichier de configuration
 # TODO : Gestion du fichier de configuration, ouverture, lecture
-a_traite_proto=[1]
+print(h.readConfig())
+a_traite_proto=[0]
 
 #Parsing des .txt
 
 dictionnaires=[]
 dictionnaires.append(h.readTXT("noms"))
 dictionnaires.append(h.readTXT("test"))
+dictionnaires.append(h.readTXT("date"))
+dictionnaires.append(h.readTXT("nombres"))
+
 
 #Traitement des dictionnaires
 

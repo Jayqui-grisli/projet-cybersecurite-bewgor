@@ -1,5 +1,16 @@
 import helper as h
 import os
+import json
+
+
+conf_file=open("config.json","r")
+
+configs=json.load(conf_file)
+
+func=configs["functions"]
+print(func["initiale"])
+
+
 
 mot="test"
 
@@ -7,8 +18,3 @@ mot_up=h.toUpper(mot)
 
 print(mot_up)
 
-nom_sortie=input("Entrez le nom du fichier à générer \n")
-print(nom_sortie)
-
-if os.path.isfile("genere.txt") :
-    os.remove("genere.txt")
