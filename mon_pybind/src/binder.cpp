@@ -1,0 +1,21 @@
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <shuffler.h>
+
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
+
+namespace py = pybind11;
+
+PYBIND11_MODULE(shufflerModule,m) {
+    m.doc() = "allows to shuffle words in a word list";
+
+    m.def("shuffle", &shuffle, "combines the words (strings) in the given arrays (an array of arrays) to get all the possible permutations with one word of each array within the size limit",
+        py::arg("arrays"), py::arg("size"));
+
+    m.def("hello", &hello, "says hello");
+
+    m.attr("__version__") = "0.0.1";
+
+}
