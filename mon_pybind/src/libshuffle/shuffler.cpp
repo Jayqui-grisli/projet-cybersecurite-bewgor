@@ -56,7 +56,6 @@ vector<vector<int>> generate_perm(const int  nbElements,const int reqLen)
             res.push_back(vect);
         }
     }
-    cout<<"perm generated "<<res.size()<<endl;
     return res;
 }
 
@@ -105,7 +104,7 @@ int main()
     vector<string> tab3={"lolo"};
     vector<string> tab4={};
     vector<vector<string>> input = {tab1,tab2,tab3,tab4};
-    vector<vector<string>> out=shuffle(input,3);
+    vector<vector<string>> out=shuffle(input,2);
     for (vector<string> vect:out)
     {
         for(string str:vect)
