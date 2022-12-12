@@ -1,5 +1,5 @@
 #pybind 11
-pybind
+pybind/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
