@@ -12,3 +12,4 @@ set(HEADERS
 
 add_library(myshuffler ${SRCS} ${HEADERS})
 target_include_directories(myshuffler PUBLIC .)
+set_target_properties(myshuffler PROPERTIES POSITION_INDEPENDENT_CODE ON)
