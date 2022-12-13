@@ -34,4 +34,6 @@ verifiez la création d'un dossier dist et de son contenu en .wlh
 
 - pip install dist/(fichier.wlh)
 
+Vérifications :
+-
 Dans les deux cas verifez l'installation par un "pip freeze" qui affiche les module installés, ou par un "import shufflerModule" dans un fichier ou terminal python.
