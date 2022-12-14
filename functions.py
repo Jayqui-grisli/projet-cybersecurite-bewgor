@@ -10,7 +10,6 @@ def prototype_fonction(dicos,a_traite):
     return new_dico
 
 
-
 def traitement_date(file_name):
     wordlist = []
     file_path = "./dicos/" + file_name + ".txt"
@@ -26,7 +25,3 @@ def traitement_nomh(file_name):
         wordlist.append(name)
     return wordlist
 
-
-def traitement_nombre(file_name):
-    wordlist = []
-    return wordlist

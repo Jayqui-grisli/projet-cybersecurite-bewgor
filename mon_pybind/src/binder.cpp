@@ -16,6 +16,9 @@ PYBIND11_MODULE(shufflerModule,m) {
 
     m.def("hello", &hello, "says hello");
 
+    m.def("mixedUpper", &mixedUpper, "generates a list of all the possible combinations of upper and lower character in a given word",
+        py::arg("word"));
+    
     m.attr("__version__") = "0.0.1";
 
 }

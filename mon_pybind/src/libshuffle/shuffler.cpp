@@ -97,21 +97,42 @@ vector<vector<string>> shuffle(vector<vector<string>> input,int size)
     return res;
 }
 
-int main()
+void mixedUpperBis(string word,bool* check,int currIdx, vector<string> &out_dico)
 {
-    vector<string> tab1={"toto","tata","titi"};
-    vector<string> tab2={"coco","caca"};
-    vector<string> tab3={"lolo"};
-    vector<string> tab4={};
-    vector<vector<string>> input = {tab1,tab2,tab3,tab4};
-    vector<vector<string>> out=shuffle(input,2);
-    for (vector<string> vect:out)
+    if (currIdx>word.length())
     {
-        for(string str:vect)
-        {
-            cout<<str<<" ";
-        }
-        cout<<endl;
+        return;
     }
+    else if (currIdx==word.length())
+    {
+        string tempword="";
+        for (int i=0;i<word.length();i++)
+        {
+            if (check[i])
+            {
+                tempword+=toupper(word[i]);
+            }
+            else
+            {
+                tempword+=word[i];
+            }
+        }
+        out_dico.push_back(tempword);
+        return;
+    }
+    check[currIdx]=true;
+    mixedUpperBis(word,check,currIdx+1,out_dico);
+    check[currIdx]=false;
+    mixedUpperBis(word,check,currIdx+1,out_dico);
+    return;
 }
+
+vector<string> mixedUpper(string word)
+{
+    bool* check=new bool[word.length()]{};
+    vector<string> out_dico;
+    mixedUpperBis(word,check,0,out_dico);
+    return out_dico;
+}
+
 

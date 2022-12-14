@@ -98,6 +98,46 @@ vector<vector<string>> shuffle(vector<vector<string>> input,int size)
     return res;
 }
 
+
+void mixedUpperBis(string word,bool* check,int currIdx, vector<string> &out_dico)
+{
+    if (currIdx>word.length())
+    {
+        return;
+    }
+    else if (currIdx==word.length())
+    {
+        string tempword="";
+        for (int i=0;i<word.length();i++)
+        {
+            if (check[i])
+            {
+                tempword+=toupper(word[i]);
+            }
+            else
+            {
+                tempword+=word[i];
+            }
+        }
+        out_dico.push_back(tempword);
+        return;
+    }
+    check[currIdx]=true;
+    mixedUpperBis(word,check,currIdx+1,out_dico);
+    check[currIdx]=false;
+    mixedUpperBis(word,check,currIdx+1,out_dico);
+    return;
+}
+
+vector<string> mixedUpper(string word)
+{
+    bool* check=new bool[word.length()]{};
+    vector<string> out_dico;
+    mixedUpperBis(word,check,0,out_dico);
+    return out_dico;
+}
+
+
 int main()
 {
     vector<string> tab1={"toto","tata","titi"};
