@@ -1,6 +1,7 @@
 import helper as h
 import functions as f
 import os
+import numpy as np
 
 
 #Interaction utilisateur
@@ -11,29 +12,37 @@ filepath_sortie = "./sorties_txt/" + nom_sortie + ".txt"
 
 
 #Lecture du fichier de configuration
-# TODO : Gestion du fichier de configuration, ouverture, lecture
-print(h.readConfig())
-a_traite_proto=[0]
 
-#Parsing des .txt
-
-dictionnaires=[]
-dictionnaires.append(h.readTXT("noms"))
-dictionnaires.append(h.readTXT("test"))
-dictionnaires.append(h.readTXT("date"))
-dictionnaires.append(h.readTXT("nombres"))
-
+conf=h.readConfig() #Lecturee du fichier de configuration
+ldicos=[]
+for dico in conf: #Récupération des noms des txts
+    ldicos.append(dico["name"])
 
 #Traitement des dictionnaires
 
-dictionnaires.append(f.prototype_fonction(dictionnaires,a_traite_proto))
+dictionnaires=[]
+for dic in ldicos :
+    c_dico=h.readTXT(dic) #Parsing du txt
+    new_dico=[c_dico]
+    for d in conf :
+        if d["name"]==dic:
+            list_fonctions = d["functions"] #Récupération de la liste des fonctions pour ce dictionnaire
+            dic_fonctions = {}
+            for dicf in list_fonctions:
+                dic_fonctions.update(dicf) #Transformation en dictionnaires
+
+            if dic_fonctions['initiale']: #Traitement par chaque fonction
+                new_dico.append(f.initiale(c_dico))
+
+    new_dico_merged=h.merger(new_dico) #Fusion des listes du txt en cours de traitement
+    dictionnaires.append(new_dico_merged) #Ajout des mots traités.
+
+
+
 
 #Création du dictionnaire général
 
-dictionnaire_g=[]
-for d in dictionnaires :
-    for w in d :
-        dictionnaire_g.append(w)
+dictionnaire_g=h.merger(dictionnaires)
 
 #Génération de la liste de mots de passe par permutation
 

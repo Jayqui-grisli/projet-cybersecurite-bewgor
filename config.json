@@ -1,1 +1,18 @@
-{"name": "test", "functions": [{"initiale" : false},{"toUpper": true}]}
+{
+
+  "dicos": [
+    {"name": "test",
+      "functions":
+      [
+        {"initiale" : false},
+        {"toUpper": true}
+      ]},
+    {"name": "noms",
+      "functions":
+      [
+        {"initiale" : true},
+        {"toUpper": true}
+      ]}
+  ]
+
+}
