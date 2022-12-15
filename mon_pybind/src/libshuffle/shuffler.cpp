@@ -59,35 +59,21 @@ vector<vector<int>> generate_perm(const int  nbElements,const int reqLen)
     return res;
 }
 
-//generate all string pairs possible with tab1 elements in 1st position and tab2 elements in 2nd position
-vector<string> generate_pairs(vector<string> tab1,vector<string> tab2)
-{
-    vector<string> res;
-    for(string st1 : tab1)
-    {
-        for (string st2 : tab2)
-        {
-            if(!(st1+st2).empty())
-            res.push_back(st1+st2);
-        }
-    }
-    return res;
-}
 
-vector<vector<string>> shuffle(vector<vector<string>> input,int size)
+vector<string> shuffle(vector<string> input,int size)
 {
     if (input.size()==0 || size==0)
     {
         return {};
     }
-    vector<vector<string>> res;
+    vector<string> res;
     vector<vector<int>> permutations = generate_perm(input.size(),size);
     for (vector<int> perm:permutations)
     {
-        vector<string> seed=input[perm[0]];
+        string seed=input[perm[0]];
         for (int i=1;i<perm.size();i++)
         {
-            seed=generate_pairs(seed,input[perm[i]]);
+            seed+=input[perm[i]];
         }
         if(seed.size()>0)
         {
