@@ -47,6 +47,7 @@ def toLower(contents):
         lowerContent+=word.lower()
     return lowerContent
 
+
 def firstUpper(contents):
     firstUpperContent=[]
     for word in contents:

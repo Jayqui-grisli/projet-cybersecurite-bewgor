@@ -56,7 +56,6 @@ vector<vector<int>> generate_perm(const int  nbElements,const int reqLen)
             res.push_back(vect);
         }
     }
-    cout<<"perm generated "<<res.size()<<endl;
     return res;
 }
 
@@ -98,7 +97,6 @@ vector<vector<string>> shuffle(vector<vector<string>> input,int size)
     return res;
 }
 
-
 void mixedUpperBis(string word,bool* check,int currIdx, vector<string> &out_dico)
 {
     if (currIdx>word.length())
@@ -137,22 +135,4 @@ vector<string> mixedUpper(string word)
     return out_dico;
 }
 
-
-int main()
-{
-    vector<string> tab1={"toto","tata","titi"};
-    vector<string> tab2={"coco","caca"};
-    vector<string> tab3={"lolo"};
-    vector<string> tab4={};
-    vector<vector<string>> input = {tab1,tab2,tab3,tab4};
-    vector<vector<string>> out=shuffle(input,3);
-    for (vector<string> vect:out)
-    {
-        for(string str:vect)
-        {
-            cout<<str<<" ";
-        }
-        cout<<endl;
-    }
-}
 
