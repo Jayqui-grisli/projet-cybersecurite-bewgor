@@ -1,1 +1,27 @@
-{"name": "test", "functions": [{"initiale" : false},{"toUpper": true}]}
+{
+
+  "dicos": [
+    {"name": "test",
+      "functions":
+      [
+        {"initiale" : false},
+        {"mixedUpper" : false},
+        {"toUpper": true}
+      ]},
+    {"name": "ceci",
+      "functions":
+      [
+        {"initiale" : false},
+        {"mixedUpper" : true},
+        {"toUpper": true}
+      ]},
+    {"name": "noms",
+      "functions":
+      [
+        {"initiale" : false},
+        {"mixedUpper" : false},
+        {"toUpper": true}
+      ]}
+  ]
+
+}
