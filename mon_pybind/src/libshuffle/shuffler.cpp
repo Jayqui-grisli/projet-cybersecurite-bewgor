@@ -67,17 +67,20 @@ vector<string> shuffle(vector<string> input,int size)
         return {};
     }
     vector<string> res;
-    vector<vector<int>> permutations = generate_perm(input.size(),size);
-    for (vector<int> perm:permutations)
+    for (int j=2;j<=size;j++)
     {
-        string seed=input[perm[0]];
-        for (int i=1;i<perm.size();i++)
+        vector<vector<int>> permutations = generate_perm(input.size(),j);
+        for (vector<int> perm:permutations)
         {
-            seed+=input[perm[i]];
-        }
-        if(seed.size()>0)
-        {
-            res.push_back(seed);
+            string seed=input[perm[0]];
+            for (int i=1;i<perm.size();i++)
+            {
+                seed+=input[perm[i]];
+            }
+            if(seed.size()>0)
+            {
+                res.push_back(seed);
+            }
         }
     }
     return res;
