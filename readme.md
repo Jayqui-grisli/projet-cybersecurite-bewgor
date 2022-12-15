@@ -3,7 +3,7 @@ Prérequis :
 Il faut avoir Cmake installé et le dossier \bin de Cmake ajouté au path. 
 Prévoyez aussi un compilateur c++ (gcc) et verifiez sa detection par Cmake (ajout au path).
 
-Procesus d'import (windows) : 
+Processus d'import (windows) : 
 -
 NB : Il faut avoir visual studio (vscode ne remplace pas) installé ! + on se place à la racine du projet dans ce qui suit pour commencer.
 
@@ -14,7 +14,7 @@ NB : Il faut avoir visual studio (vscode ne remplace pas) installé ! + on se pl
 - pip install .\mon_pybind\
 
 
-Procesus d'import (linux) :
+Processus d'import (linux) :
 -
 NB : on se place à la racine du projet pour commencer dans ce qui suit.
 
