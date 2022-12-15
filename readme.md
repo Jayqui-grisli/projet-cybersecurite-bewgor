@@ -9,7 +9,6 @@ NB : Il faut avoir visual studio (vscode ne remplace pas) installé ! + on se pl
 
 - pip install Cmake (posssibe redondance)
 - cd .\mon_pybind\
-- rmdir .\pybind11 
 - git clone https://github.com/pybind/pybind11
 - cd ..
 - pip install .\mon_pybind\
@@ -21,7 +20,6 @@ NB : on se place à la racine du projet pour commencer dans ce qui suit.
 
 - pip install Cmake (possible redondance)
 - cd mon_pybind
-- rm -r pybind11
 - git clone https://github.com/pybind/pybind11
 - mkdir build
 - cd build
