@@ -1,0 +1,15 @@
+La démo :
+
+1.On montre le .zip avec mot de passe.
+
+2.Zip2john
+
+3.Crawler
+
+4.config
+
+5.Shuffle
+
+6.John
+
+7.20/20
