@@ -8,11 +8,13 @@ import os
 class scraper :
     links_to_visit=[]
     url=None
-    depth=0
-    myPath_words=os.path.realpath(os.path.dirname(__file__))+"\scraped_word_list.txt"
-    myPath_numbers=os.path.realpath(os.path.dirname(__file__))+"\scraped_number_list.txt"
+    depth=-1
+    min_size=-1
     stay_on_domain=False
     domain=""
+    myPath_words=os.path.realpath(os.path.dirname(__file__))+"\scraped_word_list.txt"
+    myPath_numbers=os.path.realpath(os.path.dirname(__file__))+"\scraped_number_list.txt"
+
 
     def __init__(self):
         #demander l'url a l'user + traiter via regex si le format est bon
@@ -25,12 +27,13 @@ class scraper :
         if(re.search(r"^https://",self.url)==None):
             self.url="https://"+self.url
         
-        #demander a l'user la profonderur de recherche (limitée à 3)
-        print("enter depth of research (0-3) : ")
-        self.depth=int(input())
+        #demander a l'user la profondeur de recherche (limitée à 3)
         while (self.depth not in range(0,4)):
-            print("enter depth of research (0-3) : ")
-            self.depth=input()
+            try :
+                print("enter depth of research (0-3) : ")
+                self.depth=int(input())
+            except:
+                print("failed to read input as int")
 
         #demander a l'user s'il souhaite rester sur le domaine
         if(self.depth>0):
@@ -42,6 +45,14 @@ class scraper :
             if(temp_char=="y"):
                 self.stay_on_domain=True
                 self.domain=urlparse(self.url).netloc
+        
+        #demander a l'user la taille min des mots
+        while (self.min_size not in range(0,6)):
+            try :
+                print("enter the min size of words to keep (1-5) :")
+                self.min_size=int(input())
+            except:
+                print("failed to read input as int")
 
         with open(self.myPath_words, "w", encoding="utf-16") as f:
             f.write("")
@@ -99,21 +110,29 @@ class scraper :
         #je n'ai pas de meilleure solution pour tout extraire que de regarder dans les par et les div
         div_html=soup.find_all("div")
         p_html=soup.find_all("p")
+        
         for each_text in p_html:
             temp_str=each_text.text
-            #supprimer les charactères spéciaux, les espaces et les mots de 1 à 2 lettres
-            for character in '‘’–.:/?,!-+*=()_|#"\';<>\n@»«][':
+            #supprimer les charactères spéciaux, les espaces et les mots de 1 à min lettres
+            for character in '‘’–.:/?,!-+*=()_|#"\';<>\n@»«][\{\}\\':
                 temp_str=temp_str.replace(character," ")
+            if self.min_size>1:
+                temp_str=re.sub(rf"\b.{{1,{self.min_size}}}\b"," ",temp_str)
+            else:
+                temp_str=re.sub(rf"\b.{1}\b"," ",temp_str)
             temp_str=re.sub(r"(^ | +)"," ",temp_str)
-            temp_str=re.sub(r"\b\w{1,2}\b"," ",temp_str)
             temp_list=temp_str.split()
             word_list.append(temp_list)
+
         for each_text in div_html:
             temp_str=each_text.text
-            for character in '‘’–.:/?,!-+*=()_|#"\';<>\n@][»«':
+            for character in '‘’–.:/?,!-+*=()_|#"\';<>\n@][»«\{\}\\':
                 temp_str=temp_str.replace(character," ")
-            temp_str=re.sub(r" +"," ",temp_str)
-            temp_str=re.sub(r"\b\w{1,2}\b"," ",temp_str)
+            if self.min_size>1:
+                temp_str=re.sub(rf"\b.{{1,{self.min_size}}}\b"," ",temp_str)
+            else:
+                temp_str=re.sub(rf"\b.{1}\b"," ",temp_str)
+            temp_str=re.sub(r"(^ | +)"," ",temp_str)
             temp_list=temp_str.split()
             word_list.append(temp_list)
         #transformer list(list()) en list() et supprimer les doublons
