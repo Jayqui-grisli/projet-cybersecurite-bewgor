@@ -15,6 +15,13 @@
         {"mixedUpper" : true},
         {"toUpper": true}
       ]},
+      {"name": "nombres",
+      "functions":
+      [
+        {"initiale" : false},
+        {"mixedUpper" : false},
+        {"toUpper": false}
+      ]},
     {"name": "noms",
       "functions":
       [

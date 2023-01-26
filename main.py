@@ -57,15 +57,15 @@ dictionnaire_g=h.merger(dictionnaires)
 
 #Génération de la liste de mots de passe par permutation
 
-generated=dictionnaire_g
-#generated=sm.shuffle(dictionnaire_g,permut)
+#generated=dictionnaire_g
+generated=sm.shuffle(dictionnaire_g,permut)
 
 #Création du txt
 
 if os.path.isfile(filepath_sortie) :
     os.remove(filepath_sortie)
 dico_genere = open(filepath_sortie,"x")
-for word in dictionnaire_g :
+for word in generated :
     dico_genere.write(word)
     dico_genere.write("\n")
 dico_genere.close()
