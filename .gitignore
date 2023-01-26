@@ -154,3 +154,4 @@ cython_debug/
 #pybind 11
 mon_pybind/pybind11/
 cpp/
+web_crawler/scraped_word_list.txt
