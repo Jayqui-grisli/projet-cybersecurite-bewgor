@@ -118,8 +118,6 @@ class scraper :
                 temp_str=temp_str.replace(character," ")
             if self.min_size>1:
                 temp_str=re.sub(rf"\b.{{1,{self.min_size}}}\b"," ",temp_str)
-            else:
-                temp_str=re.sub(rf"\b.{1}\b"," ",temp_str)
             temp_str=re.sub(r"(^ | +)"," ",temp_str)
             temp_list=temp_str.split()
             word_list.append(temp_list)
@@ -130,8 +128,6 @@ class scraper :
                 temp_str=temp_str.replace(character," ")
             if self.min_size>1:
                 temp_str=re.sub(rf"\b.{{1,{self.min_size}}}\b"," ",temp_str)
-            else:
-                temp_str=re.sub(rf"\b.{1}\b"," ",temp_str)
             temp_str=re.sub(r"(^ | +)"," ",temp_str)
             temp_list=temp_str.split()
             word_list.append(temp_list)
