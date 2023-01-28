@@ -61,3 +61,13 @@ def get_initials(string):
     for word in words:
         initials += word[0]
     return initials
+
+def separate_lists(input_list):
+    numbers_list = []
+    strings_list = []
+    for i in input_list:
+        if i.isnumeric():
+            numbers_list.append(int(i))
+        else:
+            strings_list.append(i)
+    return numbers_list, strings_list
