@@ -49,6 +49,8 @@ for dic in ldicos :
 
             if dic_fonctions['initiale']: #Traitement par chaque fonction
                 new_dico.append(f.initiale(c_dico))
+            if dic_fonctions['mixedUpper']: #Traitement par chaque fonction
+                new_dico.append(f.mixedUpper(c_dico))
             if dic_fonctions['num_to_month']: #Traitement par chaque fonction
                 new_dico.append(f.num_to_month(c_dico))
             if dic_fonctions['cesar']: #Traitement par chaque fonction
