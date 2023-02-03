@@ -19,7 +19,7 @@ filepath_sortie = "./sorties_txt/" + nom_sortie + ".txt"
 
 skip_gen= False
 
-do_skip=input("Voulez vous ne pas générer et récupérer les dictionnaires intermédiaires ? Si oui, tapez Y, sinon, tapez tout autre chose")
+do_skip=input("Voulez vous ne pas générer et récupérer les dictionnaires intermédiaires ? Si oui, tapez Y, sinon, tapez tout autre chose \n")
 if do_skip=="Y" or do_skip=="y":
     skip_gen=True
 
