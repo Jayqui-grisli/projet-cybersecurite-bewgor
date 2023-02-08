@@ -1,7 +1,7 @@
 {
 
   "dicos": [
-    {"name": "ceci",
+    {"name": "scraped_number_list",
       "functions":
       [
         {"initiale" : false},

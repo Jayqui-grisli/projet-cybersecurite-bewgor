@@ -1,5 +1,6 @@
 import helper as h
 import functions as f
+import time
 import os
 import numpy as np
 import shufflerModule as sm
@@ -31,7 +32,6 @@ for dico in conf: #Récupération des noms des txts
     ldicos.append(dico["name"])
 
 #Traitement des dictionnaires
-print("pls god")
 alpha_cesar =['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26']
 alpha_l33t =['@','ß','©','d','3','ƒ','&','#','!','ʝ','k','1','m','n','0','p','q','Я','$','7','µ','v','Ш','x','Ψ','z']
 s_char = ['&','@','ù','%','$']
@@ -40,7 +40,6 @@ dictionnaires=[]
 for dic in ldicos :
     c_dico=h.readTXT(dic) #Parsing du txt
     new_dico=[c_dico]
-    print("alors peut être")
     for d in conf :
         if d["name"]==dic:
             list_fonctions = d["functions"] #Récupération de la liste des fonctions pour ce dictionnaire
@@ -51,9 +50,7 @@ for dic in ldicos :
             if dic_fonctions['initiale']: #Traitement par chaque fonction
                 new_dico.append(f.initiale(c_dico))
             if dic_fonctions['mixedUpper']: #Traitement par chaque fonction
-                print("mixedupper")
                 new_dico.append(f.mixedUpper(c_dico))
-                print("done")
             if dic_fonctions['num_to_month']: #Traitement par chaque fonction
                 new_dico.append(f.num_to_month(c_dico))
             if dic_fonctions['cesar']: #Traitement par chaque fonction
@@ -65,9 +62,6 @@ for dic in ldicos :
 
     new_dico_merged=h.merger(new_dico) #Fusion des listes du txt en cours de traitement
     dictionnaires.append(new_dico_merged) #Ajout des mots traités.
-
-
-print(dictionnaires)
 
 #Création du dictionnaire général
 
@@ -103,15 +97,19 @@ if skip_gen :
 
 else :
     print("shuffling")
+    start=time.time()
     generated=sm.shuffle(dictionnaire_g,permut)
-    print("done")
+    end=time.time()
+    print("done in",end-start)
+
 
     #Création du txt
-
+    start=time.time()
     if os.path.isfile(filepath_sortie) :
         os.remove(filepath_sortie)
     dico_genere = open(filepath_sortie,"x")
     for word in generated :
-        dico_genere.write(word)
-        dico_genere.write("\n")
+        dico_genere.write(word+"\n")
     dico_genere.close()
+    end=time.time()
+    print("wrote in",end-start)
