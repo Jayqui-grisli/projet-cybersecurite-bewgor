@@ -4,7 +4,7 @@ import json
 def hello():
     print("hello world")
 
-def readTXT(filename,keep_space=True):
+def readTXT(filename,keep_space=False):
     contents=[]
     filepath = "./dicos/" + filename + ".txt"
     file=open(filepath)

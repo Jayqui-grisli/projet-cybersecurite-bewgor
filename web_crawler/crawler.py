@@ -54,9 +54,9 @@ class scraper :
             except:
                 print("failed to read input as int")
 
-        with open(self.myPath_words, "w", encoding="utf-16") as f:
+        with open(self.myPath_words, "w", encoding="utf-8") as f:
             f.write("")
-        with open(self.myPath_numbers, "w", encoding="utf-16") as f:
+        with open(self.myPath_numbers, "w", encoding="utf-8") as f:
             f.write("")
         #lancer la séquence de traitement
         self.links_to_visit.append(self.url)
@@ -136,12 +136,12 @@ class scraper :
         self.writeToFile([*set(flat_word_list)])
 
     def writeToFile(self,words):
-        file_numbers=open(self.myPath_numbers,"a",encoding="utf-16")
+        file_numbers=open(self.myPath_numbers,"a",encoding="utf-8")
         for each_word in words:
             if (re.search(r"^[0-9]+\b",each_word)!=None):
                 file_numbers.write(each_word+"\n")
         file_numbers.close()
-        file_words=open(self.myPath_words,"a",encoding="utf-16")
+        file_words=open(self.myPath_words,"a",encoding="utf-8")
         for each_word in words :
             if (re.search(r"^[0-9]+",each_word)==None):
                 file_words.write(each_word+"\n")

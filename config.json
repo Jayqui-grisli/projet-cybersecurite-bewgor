@@ -1,21 +1,21 @@
 {
 
   "dicos": [
-    {"name": "test",
+    {"name": "ceci",
       "functions":
       [
         {"initiale" : false},
-        {"mixedUpper": true},
+        {"mixedUpper": false},
         {"num_to_month": false},
         {"cesar": false},
         {"leet": false},
         {"insert_special_char": false}
       ]},
-    {"name": "noms",
+    {"name": "scraped_word_list",
       "functions":
       [
         {"initiale" : false},
-        {"mixedUpper": true},
+        {"mixedUpper": false},
         {"num_to_month": false},
         {"cesar": false},
         {"leet": false},
