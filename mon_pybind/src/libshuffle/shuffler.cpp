@@ -50,7 +50,7 @@ vector<string> mixedUpper(string word)
     return out_dico;
 }
 
-void shuffleBis(vector<string>&input,int size,int* indexes,int currentCount,string cache,vector<string> &outdico)
+void shuffleBis(vector<string>&input,int size,int currentCount,string &cache,vector<string> &outdico)
 {
     if (currentCount>size)
     {
@@ -60,11 +60,7 @@ void shuffleBis(vector<string>&input,int size,int* indexes,int currentCount,stri
     {
         for (int i=0;i<input.size();i++)
         {   
-            if (!isInArray(indexes,i,currentCount))
-            {
-                indexes[currentCount]=i;
-                shuffleBis(input,size,indexes,currentCount+1,cache+input[i],outdico);
-            }
+            shuffleBis(input,size,currentCount+1,cache+input[i],outdico);
         }
     }
     else if(currentCount==size)
@@ -81,23 +77,12 @@ vector<string> shuffle(vector<string> input, int size)
     }
     else
     {
-        int* indexes=new int[size];
         vector<string> out_dico;
-        shuffleBis(input,size,indexes,0,"",out_dico);
-        delete[] indexes;
+        string cache="";
+        shuffleBis(input,size,0,cache,out_dico);
         return out_dico;
     }
 }
 
-bool isInArray(int* array,int item,int size)
-{
-    for (int i =0;i<size;i++)
-    {
-        if (array[i]==item)
-        {
-            return true;
-        }
-    }
-    return false;
-}
+
 
