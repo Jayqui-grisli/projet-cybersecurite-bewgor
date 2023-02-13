@@ -45,7 +45,7 @@ Modifier ensuite le fichier config.json pour rajouter l'option d'utilisation de 
         {"NOUVELLE_FONCTION": true},
       ]}`
 
-Enfin, se rendre dans le main.py pour rajouter les deux lignes suivantes, à la ligne 41.
+Enfin, se rendre dans le main.py pour rajouter les deux lignes suivantes, à la ligne 61.
 
             if dic_fonctions['NOUVELLE_FONCTION']:
                 new_dico.append(f.NOUVELLE_FONCTION(c_dico))

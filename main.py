@@ -7,22 +7,22 @@ import shufflerModule as sm
 
 
 #Interaction utilisateur
-
-nom_sortie=input("Entrez le nom du fichier à générer \n")
-permut=input("Entrez le nombre de permuation (3 par défault)\n /!\ Au delà de 5, vous risquez de mourrir avant la fin de l'exéctution du programme /!\ \n")
-if nom_sortie=='':
-    nom_sortie='default'
-if permut=='':
-    permut=3
-else :
-    permut = int(permut)
-filepath_sortie = "./sorties_txt/" + nom_sortie + ".txt"
-
 skip_gen= False
-
 do_skip=input("Voulez vous ne pas générer et récupérer les dictionnaires intermédiaires ? Si oui, tapez Y, sinon, tapez tout autre chose \n")
 if do_skip=="Y" or do_skip=="y":
     skip_gen=True
+
+if not sikp_gen :
+    nom_sortie=input("Entrez le nom du fichier à générer \n")
+    permut=input("Entrez le nombre de permuation (3 par défault)\n /!\ Au delà de 5, vous risquez de mourrir avant la fin de l'exéctution du programme /!\ \n")
+    if nom_sortie=='':
+        nom_sortie='default'
+    if permut=='':
+        permut=3
+    else :
+        permut = int(permut)
+    filepath_sortie = "./sorties_txt/" + nom_sortie + ".txt"
+
 
 #Lecture du fichier de configuration
 

@@ -16,6 +16,8 @@ def readTXT(filename,keep_space=False):
         contents_raw[i]=contents_raw[i].replace('\n','')
         if(not keep_space):
             contents=contents+contents_raw[i].rstrip().split(' ')
+            contents = contents + contents_raw[i].rstrip().split(',')
+            contents = contents + contents_raw[i].rstrip().split(';')
         else:
             contents.append(contents_raw[i].rstrip())
     return contents
