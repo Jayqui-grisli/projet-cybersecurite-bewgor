@@ -8,6 +8,7 @@ Procesus d'import (windows) :
 NB : Il faut avoir visual studio (vscode ne remplace pas) installé ! + on se place à la racine du projet dans ce qui suit pour commencer.
 
 - pip install Cmake (posssibe redondance)
+- pip install numpy
 - cd .\mon_pybind\
 - rmdir .\pybind11 
 - git clone https://github.com/pybind/pybind11
@@ -20,6 +21,7 @@ Procesus d'import (linux) :
 NB : on se place à la racine du projet pour commencer dans ce qui suit.
 
 - pip install Cmake (possible redondance)
+- pip install numpy
 - cd mon_pybind
 - rm -r pybind11
 - git clone https://github.com/pybind/pybind11
