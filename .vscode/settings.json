@@ -78,5 +78,6 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/mon_pybind/pybind11/tests/test_cmake_build/subdirectory_embed"
 }
