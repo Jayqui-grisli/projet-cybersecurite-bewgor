@@ -81,20 +81,19 @@ void shuffleBis(vector<string>&input,int size,int currentCount,string &cache,vec
     }
 }
 
-void worker(vector<string> &input,int size,vector<string>::iterator iter,int start,int finish,ofstream &myfile,string &filename, mutex &mtx)
+void worker(vector<string> &input,int size,vector<string>::iterator iter,int start,int finish,ofstream &myfile, mutex &mtx)
 {
-    cout<<"thread started"<<endl;
     vector<string> out_dico;
     string cache="";
     shuffleBis(input,size,0,cache,out_dico,true,iter,start,finish);
     lock_guard<mutex> lock(mtx);
     cout<<"thread writing"<<endl;
-    myfile.open(filename,ios::app);
+    char endline[]={'\n'};
     for (auto word : out_dico)
     {
-        myfile<<word<<endl;
+        myfile.write(word.c_str(),word.size());
+        myfile.write(endline,1);
     }
-    myfile.close();
     cout<<"thread finished writing"<<endl;
 }
 
@@ -111,16 +110,16 @@ vector<string> shuffle(vector<string> input, int size, string filename)
         mutex mtx;
         ofstream myfile;
         myfile.open(filename,ios::trunc);
-        myfile.close();
         vector<string>::iterator iter = input.begin();
-        thread worker1(worker,ref(input),size,iter,0,quarter,ref(myfile),ref(filename),ref(mtx));
-        thread worker2(worker,ref(input),size,iter,quarter,2*quarter,ref(myfile),ref(filename),ref(mtx));
-        thread worker3(worker,ref(input),size,iter,2*quarter,3*quarter,ref(myfile),ref(filename),ref(mtx));
-        thread worker4(worker,ref(input),size,iter,3*quarter,int(input.size()),ref(myfile),ref(filename),ref(mtx));
+        thread worker1(worker,ref(input),size,iter,0,quarter,ref(myfile),ref(mtx));
+        thread worker2(worker,ref(input),size,iter,quarter,2*quarter,ref(myfile),ref(mtx));
+        thread worker3(worker,ref(input),size,iter,2*quarter,3*quarter,ref(myfile),ref(mtx));
+        thread worker4(worker,ref(input),size,iter,3*quarter,int(input.size()),ref(myfile),ref(mtx));
         worker1.join();
         worker2.join();
         worker3.join();
         worker4.join();
+        myfile.close();
         cout<<"main thread ended"<<endl;
         vector<string> out_dico={};
         return out_dico;
