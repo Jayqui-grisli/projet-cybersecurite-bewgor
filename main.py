@@ -98,18 +98,18 @@ if skip_gen :
 else :
     print("shuffling")
     start=time.time()
-    generated=sm.shuffle(dictionnaire_g,permut)
+    generated=sm.shuffle(dictionnaire_g,permut,filepath_sortie)
     end=time.time()
     print("done in",end-start)
 
 
-    #Création du txt
-    start=time.time()
-    if os.path.isfile(filepath_sortie) :
-        os.remove(filepath_sortie)
-    dico_genere = open(filepath_sortie,"x")
-    for word in generated :
-        dico_genere.write(word+"\n")
-    dico_genere.close()
-    end=time.time()
-    print("wrote in",end-start)
+    # #Création du txt
+    # start=time.time()
+    # if os.path.isfile(filepath_sortie) :
+    #     os.remove(filepath_sortie)
+    # dico_genere = open(filepath_sortie,"x")
+    # for word in generated :
+    #     dico_genere.write(word+"\n")
+    # dico_genere.close()
+    # end=time.time()
+    # print("wrote in",end-start)

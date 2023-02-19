@@ -11,8 +11,8 @@ namespace py = pybind11;
 PYBIND11_MODULE(shufflerModule,m) {
     m.doc() = "allows to shuffle words in a word list";
 
-    m.def("shuffle", &shuffle, "combines the words (strings) in the given array to get all the possible permutations with one word of each array constructiong a string of the size argument",
-        py::arg("arrays"), py::arg("size"));
+    m.def("shuffle", &shuffle, "combines the words (strings) in the given array to get all the possible permutations with size words in it",
+        py::arg("arrays"), py::arg("size"), py::arg("filename"));
 
     m.def("hello", &hello, "says hello");
 
