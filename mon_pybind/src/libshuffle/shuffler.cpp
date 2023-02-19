@@ -109,7 +109,7 @@ vector<string> shuffle(vector<string> input, int size, string filename)
         int quarter=input.size()/4;
         mutex mtx;
         ofstream myfile;
-        myfile.open(filename,ios::trunc);
+        myfile.open(filename,ios::trunc|ios::binary);
         vector<string>::iterator iter = input.begin();
         thread worker1(worker,ref(input),size,iter,0,quarter,ref(myfile),ref(mtx));
         thread worker2(worker,ref(input),size,iter,quarter,2*quarter,ref(myfile),ref(mtx));

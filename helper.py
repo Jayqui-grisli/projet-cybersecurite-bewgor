@@ -7,7 +7,7 @@ def hello():
 def readTXT(filename,keep_space=False):
     contents=[]
     filepath = "./dicos/" + filename + ".txt"
-    file=open(filepath)
+    file=open(filepath,encoding="UTF-8")
     try:
         contents_raw=file.readlines()
     finally:
